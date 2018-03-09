@@ -1,12 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mappers namespace="account">
+<mapper namespace="account">
 	<insert id="addAccount">
-		insert into accountJava values(#{id},#{pw},#{email})
+		insert into accountJava values(#{id},#{pw},#{email},0)
 	</insert>
-	<insert id="addAccount2">
-		insert into accountJava values(#{id},#{pw},#{email})
-	</insert>
-</mappers>
+</mapper>
