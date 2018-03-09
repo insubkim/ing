@@ -50,7 +50,12 @@
 			<tx:method name="*" />
 		</tx:attributes>
 	</tx:advice>
+	<bean id="newAccountErrorController" class="NewAccountErrorController"></bean>
+	<!-- aop setting -->
 	<aop:config>
 		<aop:advisor advice-ref="tx" pointcut="bean(*Service)" />
+	 	<aop:aspect ref="newAccountErrorController">
+			<aop:after-throwing method="errorPage" pointcut="bean(factory)" throwing="e"/>
+		</aop:aspect> 
 	</aop:config>
 </beans>
