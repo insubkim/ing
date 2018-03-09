@@ -2,18 +2,16 @@ package mvc.service;
 
 import java.util.Map;
 
-import javax.servlet.ServletContext;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
 public class AccountService {
-	@Autowired
-	ServletContext ctx;
 
 	@Autowired
 	SqlSessionTemplate template;
+	
 	public  boolean addAccount( Map<String, String> param){
 		System.out.println(param.toString());
 		param.put("id", param.get("id"));

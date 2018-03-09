@@ -2,8 +2,6 @@ package mvc.controller;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,22 +10,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import mvc.service.AccountService;
 
-
-
 @Controller
-public class IndexController {
+public class NewAccountController {
 	@Autowired
 	AccountService accountService;
-	
-	@RequestMapping("")
-	public String IndexControl(){
-		return "/WEB-INF/view/index.jsp";
-	}
 	@RequestMapping("newAccount")
 	public String NewAccountControl(@RequestParam Map<String, String> param,Model model){
 		boolean rst =accountService.addAccount(param);
 		model.addAttribute("result",rst);
 		return "/WEB-INF/view/newAccountResult.jsp";
 	}
-
 }

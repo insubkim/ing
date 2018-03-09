@@ -33,10 +33,7 @@
 		<property name="dataSource" ref="ds" />
 		<property name="mapperLocations">
 			<list>
-				<value>/WEB-INF/mapper/show-mapper.xml</value>
-				<value>/WEB-INF/mapper/pet-mapper.xml</value>
-				<value>/WEB-INF/mapper/comments-mapper.xml</value>
-				<value>/WEB-INF/mapper/*-mapper.xml</value>
+				<value>/WEB-INF/mapper/join-mapper.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -50,9 +47,7 @@
 	</bean>
 	<tx:advice id="tx" transaction-manager="txManager">
 		<tx:attributes>
-			<tx:method name="add*" />
-			<tx:method name="modify*" />
-			<tx:method name="remove*" />
+			<tx:method name="*" />
 		</tx:attributes>
 	</tx:advice>
 	<aop:config>
