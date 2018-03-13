@@ -21,6 +21,6 @@ public class NewAccountController {
 	public String NewAccountControl(@RequestParam Map<String, String> param, Model model) {
 		boolean rst = accountService.addAccount(param);
 		model.addAttribute("result", rst);
-		return "/WEB-INF/view/newAccountResult.jsp";
+		return "/WEB-INF/view/ChatRoom.jsp";
 	}
 }

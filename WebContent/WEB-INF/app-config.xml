@@ -1,28 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-	<mvc:annotation-driven/>
+	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
 	<context:component-scan base-package="mvc.controller" />
 	<context:component-scan base-package="mvc.service" />
-	<!-- 
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/view/"/>
-		<property name="suffix" value="jsp"/>
-	 
-	 
-	</bean>
-	 -->
-	 <!-- mybatis setting -->
+	<!-- mybatis setting -->
 	<bean id="ds"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
@@ -55,8 +45,36 @@
 	<!-- aop setting -->
 	<aop:config>
 		<aop:advisor advice-ref="tx" pointcut="bean(*Service)" />
-	 	<aop:aspect ref="newAccountErrorController">
-			<aop:after-throwing method="errorPage" pointcut="bean(factory)" throwing="e"/>
-		</aop:aspect> 
+		<aop:aspect ref="newAccountErrorController">
+			<aop:after-throwing method="errorPage" pointcut="bean(factory)"
+				throwing="e" />
+		</aop:aspect>
 	</aop:config>
+	<!-- mail sender setting -->
+	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl" id="mailSender">
+		<property name="host" value="smtp.gmail.com"></property>
+		<property name="username" value="insubsubin123@gmail.com"></property>
+		<property name="password" value="tkwk2828!"></property>
+		<property name="port" value="587"/>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
 </beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
