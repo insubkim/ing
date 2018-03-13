@@ -18,9 +18,9 @@ public class MailService {
 		MimeMessage message = mailSender.createMimeMessage();
 		try {
 			// 받을 사람 -
-			message.setRecipient(RecipientType.TO, new InternetAddress(target));
+			message.setRecipient(RecipientType.TO, new InternetAddress("insubsubin123@gmail.com"));
 			// 보내는 사람 - google 서버같은 경우는 이 설정을 무시함.
-			message.setFrom(new InternetAddress("springtest.spring.io"));
+			message.setFrom(new InternetAddress("insubsubin123@gmail.com"));
 			// 제목
 			message.setSubject("[SpringIO] 가입을 축하드립니다");
 			// 내용
